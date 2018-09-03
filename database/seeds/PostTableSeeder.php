@@ -14,12 +14,49 @@ class PostTableSeeder extends Seeder
 
     	//Création des catégories
 
-    	App\Categorie::create({
+    	App\Categorie::create([
+    		'name' => 'Javascript'
+    	]);
 
-    		'name' => ''
+    	App\Categorie::create([
+    		'name' => 'Laravel'
+    	]);
 
-    	});
+    	App\Categorie::create([
+    		'name' => 'Wordpress'
+    	]);
 
-        factory(App\Post::class, 15)->create();
+    	App\Categorie::create([
+    		'name' => 'Vue.JS'
+    	]);
+
+    	
+
+    	
+
+        factory(App\Post::class, 15)->create()->each(function($post){
+        	//associations de catégorie à un post que nous venons de créer.
+ 			$categorie = App\Categorie::find(rand(1,4));
+
+ 			$post->category()->associate($categorie);
+
+ 			$post->save();
+
+ 			Storage::disk('local')->delete(Storage::allFiles());
+
+    		$link = str_random(12) . '.jpg';
+    		$file = file_get_contents('http://lorempicsum.com/futurama/250/250' . rand(1,9));
+
+    		Storage::disk('local')->put($link, $file);
+
+ 			$post->picture()->create([
+    		'title' => 'Default',
+    		'link' => $link
+    		]);
+
+ 			//pour chaque $book on lui associe un genre en particulier.
+ 			$post->category()->associate($categorie);
+        	$post->save(); //il faut garder l'association pour faire persister en base de données.
+        });
     }
 }
