@@ -22,3 +22,7 @@ Route::get('posts', function (){
 Route::get('posts/{id}', function($id){
 	return App\Post::find($id);
 });
+
+Route::get('/', 'FrontController@index');
+
+Route::get('book/{id}', 'FrontController@show')->where(['id' => '[0-9]+']);
