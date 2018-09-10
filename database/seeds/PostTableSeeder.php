@@ -45,7 +45,8 @@ class PostTableSeeder extends Seeder
  			Storage::disk('local')->delete(Storage::allFiles());
 
     		$link = str_random(12) . '.jpg';
-    		$file = file_get_contents('http://lorempicsum.com/futurama/250/250' . rand(1,9));
+    		$file = file_get_contents('https://dummyimage.com/250x250/' . rand(1,9));
+
 
     		Storage::disk('local')->put($link, $file);
 
@@ -54,7 +55,7 @@ class PostTableSeeder extends Seeder
     		'link' => $link
     		]);
 
- 			//pour chaque $book on lui associe un genre en particulier.
+ 			//pour chaque $post on lui associe une catégorie en particulier.
  			$post->category()->associate($categorie);
         	$post->save(); //il faut garder l'association pour faire persister en base de données.
         });
