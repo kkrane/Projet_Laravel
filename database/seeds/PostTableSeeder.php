@@ -32,7 +32,7 @@ class PostTableSeeder extends Seeder
 
     	
 
-    	
+    	Storage::disk('local')->delete(Storage::allFiles());
 
         factory(App\Post::class, 15)->create()->each(function($post){
         	//associations de catégorie à un post que nous venons de créer.
@@ -42,7 +42,6 @@ class PostTableSeeder extends Seeder
 
  			$post->save();
 
- 			Storage::disk('local')->delete(Storage::allFiles());
 
     		$link = str_random(12) . '.jpg';
     		$file = file_get_contents('https://dummyimage.com/250x250/' . rand(1,9));

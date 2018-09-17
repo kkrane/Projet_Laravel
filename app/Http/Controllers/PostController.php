@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Post;
+use App\Categorie;
 
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $paginate = 5;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return "dashboard";
+        $posts = Post::paginate($this->paginate);
+
+        return view('back.post.index', ['posts' => $posts]);
     }
 
     /**
@@ -45,7 +50,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id); 
+
+        return view('back.post.show', ['post' => $post]);
     }
 
     /**
