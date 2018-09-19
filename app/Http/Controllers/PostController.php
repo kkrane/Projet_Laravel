@@ -28,7 +28,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Categorie::pluck('name', 'id')->all();
+        //$posts = Post::pluck('name', 'id')->all();
+
+        return view('back.post.create', ['categories' => $categories]);
     }
 
     /**
@@ -39,7 +42,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create($request->all());
+
+        return redirect()->route('post.index')->with('message', 'success');
     }
 
     /**
