@@ -15,19 +15,15 @@ class PostTableSeeder extends Seeder
     	//Création des catégories
 
     	App\Categorie::create([
-    		'name' => 'Javascript'
+    		'name' => 'Développeur Full stack'
     	]);
 
     	App\Categorie::create([
-    		'name' => 'Laravel'
+    		'name' => 'Développeur Front end'
     	]);
 
     	App\Categorie::create([
-    		'name' => 'Wordpress'
-    	]);
-
-    	App\Categorie::create([
-    		'name' => 'Vue.JS'
+    		'name' => 'Développeur Back end'
     	]);
 
     	

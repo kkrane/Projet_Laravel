@@ -42,9 +42,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+          $this->validate($request,[
+            'titre' => 'required',
+            'post_type' => 'required',
+            'description' => 'required|string',
+            'category_id' => 'integer',
+            'price' => 'integer', // pour vérifier un tableau d'entiers il faut mettre authors.*
+            'nb_max_personne' => 'integer',
+            'start_dt' => 'date',
+            'end_dt' => 'date| after:start_dt',
+            'status' => 'in:published,unpublished'
+        ]);
+
         $post = Post::create($request->all());
 
-        return redirect()->route('post.index')->with('message', 'success');
+        return redirect()->route('post.index')->with('message', 'Le post a bien été crée !');
     }
 
     /**
@@ -68,7 +80,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        $categories = Categorie::all();
+
+        return view('back.post.edit', compact('post', 'categories'));
     }
 
     /**
@@ -80,7 +96,12 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->update($request->all());
+        //dd($request);
+
+        return redirect()->route('post.index')->with('message', 'La mise à jour a réussi !');
     }
 
     /**
@@ -91,6 +112,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()->route('post.index')->with('message', 'success delete');
     }
 }

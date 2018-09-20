@@ -4,6 +4,8 @@
 <a href="{{route('post.create')}}"><button type="button" class="btn btn-success">Ajouter un livre</button>
 </a>
 </br>
+@include('back.post.partials.flash')
+</br>
 </br>
 {{$posts->links()}}
 </br>
@@ -26,9 +28,15 @@
       <td>{{$post->post_type}}</td>
       <td>{{$post->created_at}}</td>
       <td>STATUT</td>
-      <td><button type="button" class="btn btn-success">Modifier</button></td>
+      <td><a href="{{route('post.edit', $post->id)}}"><button type="button" class="btn btn-success">Modifier</button></a></td>
       <td><a href="{{route('post.show', $post->id)}}">Voir</a></td>
-      <td>DELETE</td> 
+      <td>
+        <form class="delete" method="POST" action="{{route('post.destroy', $post->id)}}">
+            {{ method_field('DELETE') }}
+            {{ csrf_field() }}
+            <input class="btn btn-danger" type="submit" value="delete" >
+        </form>
+      </td> 
     </tr>
     @empty
       Aucun titre...
@@ -37,4 +45,9 @@
 </table>
 {{$posts->links()}}
 @endsection 
+
+@section('scripts')
+    @parent
+    <script src="{{asset('js/confirm.js')}}"></script>
+@endsection
 
