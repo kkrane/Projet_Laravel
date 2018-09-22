@@ -42,7 +42,7 @@
                             @endforeach
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="price">Prix :</label>
                         <input type="text" name="price" value="{{$post->price}}" class="form-control" id="price"

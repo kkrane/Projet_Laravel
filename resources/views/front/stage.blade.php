@@ -1,8 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Derniers Posts :</h1>
+<h1>Tous les stages :</h1>
 <ul class="list-group">
+</br>
+{{$posts->links()}}
 </br>
 @forelse($posts as $post)
 <li class="list-group-item">
@@ -23,6 +25,8 @@
 @empty
 <li>Désolé pour l'instant aucun post n'est publié sur le site</li>
 @endforelse
+</br>
+{{$posts->links()}}
 </ul>
 </br>
 @endsection

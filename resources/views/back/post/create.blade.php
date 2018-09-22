@@ -19,6 +19,14 @@
 		    			@if($errors->has('description')) <span class="error bg-warning">{{$errors->first('description')}}</span>@endif
 					</div>
 					<div class="form-group">
+                        <label for="post_type">Formation :</label>
+                        <select class="form-control" id="post_type" name="post_type">
+                        <option value="stage">Stage</option>
+                        <option value="formation">Formation</option>
+                        <option value="undetermined">undetermined</option>
+                        </select>
+                    </div>
+					<div class="form-group">
 				      <label for="categorie">Catégorie</label>
 				      <select id="categorie" name="category_id" class="form-control">
 				        <option value="0" {{ is_null(old('category_id'))? 'selected' : '' }}>Aucun Categorie</option>

@@ -44,7 +44,6 @@ class PostController extends Controller
     {
           $this->validate($request,[
             'titre' => 'required',
-            'post_type' => 'required',
             'description' => 'required|string',
             'category_id' => 'integer',
             'price' => 'integer', // pour vérifier un tableau d'entiers il faut mettre authors.*
@@ -99,7 +98,6 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->update($request->all());
-        //dd($request);
 
         return redirect()->route('post.index')->with('message', 'La mise à jour a réussi !');
     }

@@ -10,7 +10,7 @@ $factory->define(App\Post::class, function (Faker $faker) { //Model
         'start_dt' => $faker->dateTime(),
         'end_dt' => $faker->dateTime(),
         'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 5000.00),
-        'nb_max_personne' => $faker->numberBetween(0, 30)
-
+        'nb_max_personne' => $faker->numberBetween(0, 30),
+        'status' => $faker->randomElement(['unpublished', 'published'])
     ];
 });

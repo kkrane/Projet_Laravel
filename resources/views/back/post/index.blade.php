@@ -27,7 +27,13 @@
       <th>{{$post->titre}}</th>
       <td>{{$post->post_type}}</td>
       <td>{{$post->created_at}}</td>
-      <td>STATUT</td>
+       <td>
+                @if($post->status == 'published')
+                <button type="button" class="btn btn-info">published</button>
+                @else 
+                <button type="button" class="btn btn-warning">unpublished</button>
+                @endif
+       </td>
       <td><a href="{{route('post.edit', $post->id)}}"><button type="button" class="btn btn-success">Modifier</button></a></td>
       <td><a href="{{route('post.show', $post->id)}}">Voir</a></td>
       <td>

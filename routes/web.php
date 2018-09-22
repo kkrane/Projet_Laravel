@@ -27,7 +27,13 @@ Route::get('/', 'FrontController@index');
 
 Route::get('post/{id}', 'FrontController@show')->where(['id' => '[0-9]+']);
 
-Route::get('categorie/{id}', 'FrontController@showPostByCategorie')->where(['id' => '[0-9]+']);
+Route::get('formation', 'FrontController@showPostByFormation')->where(['id' => '[0-9]+']);
+
+Route::get('contact', 'FrontController@contact');
+
+Route::post('contact', 'FrontController@maildev')->name('maildev');
+
+Route::get('stage', 'FrontController@showPostByStage')->where(['id' => '[0-9]+']);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -12,7 +12,7 @@ class Post extends Model
 	];
 
 	protected $fillable = [
-		'titre', 'post_type', 'description', 'category_id', 'price', 'nb_max_personne', 'start_dt', 'end_dt'
+		'titre', 'post_type', 'description', 'category_id', 'price', 'nb_max_personne', 'start_dt', 'end_dt', 'status'
 	];
 
     public function category(){
@@ -21,5 +21,9 @@ class Post extends Model
 
     public function picture(){
     	return $this->hasOne(Picture::class);
+    }
+
+    public function scopePublished($query){
+    	return $query->where('status', 'published');
     }
 }
