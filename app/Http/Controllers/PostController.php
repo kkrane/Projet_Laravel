@@ -151,12 +151,12 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('post.index')->with('message', 'success delete');
+        return redirect()->route('post.index')->with('message', 'La suppression a bien été effectué !');
     }
 
 
     // function pour effectuer une recherche
     public function search(){
-        
+
     }
 }

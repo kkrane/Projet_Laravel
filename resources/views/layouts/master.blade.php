@@ -16,6 +16,9 @@
 @section('scripts')
 <script src="{{asset('js/app.js')}}"></script>
 @show
+<footer class="footer">
+@include('partials.footer')
+</footer>
 </body>
 </html> 
 

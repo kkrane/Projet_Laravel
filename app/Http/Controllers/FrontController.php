@@ -56,6 +56,7 @@ class FrontController extends Controller
 
      }
 
+     // Envoie de mail via la page contact avec Maildev
      public function maildev(Request $request){
         //Envoie du formulaire de contact (mailDev)
         $this->validate($request, [
@@ -67,4 +68,17 @@ class FrontController extends Controller
         return redirect()->route('maildev')->with('message', __('Votre email a bien été envoyé !'));
 
      }
+
+     public function search(){
+
+        $posts = Post::published()->where('title', 'like', "%%")
+                                  ->orWhere('post_type', 'like', "%%")
+                                  ->orWhere('categorie', 'like', "%%")
+                                  ->paginate($this->paginate);
+
+        return view();
+
+     }
+
 }
+

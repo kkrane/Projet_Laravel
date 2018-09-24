@@ -42,28 +42,40 @@
                             @endforeach
                         </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="price">Prix :</label>
-                        <input type="text" name="price" value="{{$post->price}}" class="form-control" id="price"
-                               placeholder="Prix">
-                        @if($errors->has('price')) <span class="error bg-warning text-warning">{{$errors->first('price')}}</span>@endif
+                    </br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="price">Prix :</label>
+                                <input type="text" name="price" value="{{$post->price}}" class="form-control" id="price"
+                                       placeholder="Prix">
+                                @if($errors->has('price')) <span class="error bg-warning text-warning">{{$errors->first('price')}}</span>@endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nb_max_personne">Nombre de personnes : </label>
+                                <input type="text" name="nb_max_personne" value="{{$post->nb_max_personne}}" class="form-control" id="nb_max_personne"
+                                       placeholder="Nombre de personnes">
+                                @if($errors->has('nb_max_personne')) <span class="error bg-warning text-warning">{{$errors->first('nb_max_personne')}}</span>@endif
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nb_max_personne">Nombre de personnes : </label>
-                        <input type="text" name="nb_max_personne" value="{{$post->nb_max_personne}}" class="form-control" id="nb_max_personne"
-                               placeholder="Nombre de personnes">
-                        @if($errors->has('nb_max_personne')) <span class="error bg-warning text-warning">{{$errors->first('nb_max_personne')}}</span>@endif
-                    </div>
-                    <div class="form-group">
-                        <label for="start_dt">Commence le : </label>
-                        <input type="date" name="start_dt" value="{{$post->start_dt->format('Y-m-d')}}" class="form-control" id="start_dt">
-                        @if($errors->has('start_dt')) <span class="error bg-warning text-warning">{{$errors->first('start_dt')}}</span>@endif
-                    </div>
-                    <div class="form-group">
-                        <label for="end_dt">Termine le : </label>
-                        <input type="date" name="end_dt" value="{{$post->end_dt->format('Y-m-d')}}" class="form-control" id="end_dt">
-                        @if($errors->has('end_dt')) <span class="error bg-warning text-warning">{{$errors->first('end_dt')}}</span>@endif
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="start_dt">Commence le : </label>
+                                <input type="date" name="start_dt" value="{{$post->start_dt->format('Y-m-d')}}" class="form-control" id="start_dt">
+                                @if($errors->has('start_dt')) <span class="error bg-warning text-warning">{{$errors->first('start_dt')}}</span>@endif
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="end_dt">Termine le : </label>
+                                <input type="date" name="end_dt" value="{{$post->end_dt->format('Y-m-d')}}" class="form-control" id="end_dt">
+                                @if($errors->has('end_dt')) <span class="error bg-warning text-warning">{{$errors->first('end_dt')}}</span>@endif
+                            </div>
+                        </div>
                     </div>
 
             </div><!-- #end col md 6 -->
@@ -93,4 +105,6 @@
             </div><!-- #end col md 6 -->
             </form>
         </div>
+    </div>
+</div>
 @endsection

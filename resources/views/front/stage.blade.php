@@ -25,7 +25,7 @@
 	    <h2><a href="{{url('post', $post->id)}}">{{$post->titre}}</a></h2>
 	    <p>Prix : {{$post->price}} €</p>
 	    <p>Nombre de place : {{$post->nb_max_personne}}</p>
-	    <p>Commence le : {{$post->start_dt->format('Y-m-d')}}</p>
+	    <p>Commence le : {{$post->start_dt->format('d-m-Y')}}</p>
 	  </div>
 	</div>
 	</div>

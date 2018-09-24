@@ -17,4 +17,20 @@
 	height: 95%;
 }
 
-.
+.dashboard{
+	overflow:scroll;
+}
+
+.navbar-nav .nav-link{
+	padding-right: none; 
+    padding-left: none; 
+}
+
+.footer{
+	background-color: #fff;
+	border-top: 1px solid #f8faff;
+}
+
+.footer a{
+	color: #000000;
+}
