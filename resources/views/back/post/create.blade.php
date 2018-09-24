@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<form action="{{route('post.store')}}" method="post">
+<form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
 	{{ csrf_field() }}
 	<div class="row">
 		<div class="col-md-6">
@@ -78,7 +78,10 @@
 			<br>
 			<div class="input-file">
                 <h2>File :</h2>
-                <input class="file" type="file" name="picture" >
+                <label for="genre">Title image :</label>
+                <input type="text" name="title_image" value="{{old('title_image')}}">
+                <input class="file" type="file" name="picture">
+                @if($errors->has('picture')) <span class="error bg-warning text-warning">{{$errors->first('picture')}}</span> @endif
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Ajouter un post</button>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<a href="{{route('post.create')}}"><button type="button" class="btn btn-success">Ajouter un livre</button>
+<a href="{{route('post.create')}}"><button type="button" class="btn btn-success">Ajouter un post</button>
 </a>
 </br>
 @include('back.post.partials.flash')

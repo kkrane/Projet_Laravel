@@ -6,20 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Post</title>
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-           @include('partials.menu')
-        </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-        @yield('content')
-    </div>
-    </div>
-</div>
+<header>
+@include('partials.menu')
+</header>
+@yield('content')
 @section('scripts')
 <script src="{{asset('js/app.js')}}"></script>
 @show

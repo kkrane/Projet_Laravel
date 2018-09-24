@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Modifier un Post : </h1>
-                <form action="{{route('post.update', $post->id)}}" method="post">
+                <form action="{{route('post.update', $post->id)}}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{method_field('PUT')}}
                     <div class="form">
@@ -73,10 +73,20 @@
             <input type="radio" @if(old('status')=='published') checked @endif name="status" value="published" checked> publier<br>
             <input type="radio" @if(old('status')=='unpublished') checked @endif name="status" value="unpublished" > dépulier<br>
             </div>
+            </br>
             <div class="input-file">
                 <h2>File :</h2>
+                <label for="genre">Title image :</label>
+                <input type="text" name="title_image" value="{{old('title_image')}}">
                 <input class="file" type="file" name="picture" >
                 @if($errors->has('picture')) <span class="error bg-warning text-warning">{{$errors->first('picture')}}</span> @endif
+            </div>
+            </br>
+            <div class="form-group">
+                <h2>Image associée :</h2>
+            </div>
+            <div class="form-group">
+            <img width="300" src="{{url('images', $post->picture->link)}}" alt="">
             </div>
             </br>
             <button type="submit" class="btn btn-primary">Modifiez un post</button>

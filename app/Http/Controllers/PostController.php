@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Post;
 use App\Categorie;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -54,6 +56,20 @@ class PostController extends Controller
         ]);
 
         $post = Post::create($request->all());
+        // image
+        $im = $request->file('picture');
+
+        if (!empty($im)) {
+            
+            $link = $request->file('picture')->store('images');
+
+            // mettre à jour la table picture pour le lien vers l'image dans la base de données
+            $post->picture()->create([
+                'link' => $link,
+                'title' => $request->title_image?? $request->title
+            ]);
+        }
+        //dd($request);
 
         return redirect()->route('post.index')->with('message', 'Le post a bien été crée !');
     }
@@ -99,6 +115,27 @@ class PostController extends Controller
 
         $post->update($request->all());
 
+        $new_image = $request->file('picture');
+        $old_image = $post->picture->link;
+        
+        // si on associe une image à un post
+        if ($new_image !== null) {
+            Storage::disk('local')->delete($old_image); // supprimer physiquement l'image
+
+            $link = $request->file('picture')->store('/');
+            // suppression de l'image si elle existe 
+            if($post->picture()->exists()){
+                $post->picture()->update([
+                    'link' => $link,
+                    'title' => $request->title_image?? $request->title
+                ]);
+            }else{
+                $post->picture()->create([
+                    'link' => $link,
+                    'title' => $request->title_image?? $request->title
+                ]);
+            }
+        }
         return redirect()->route('post.index')->with('message', 'La mise à jour a réussi !');
     }
 
@@ -115,5 +152,11 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('post.index')->with('message', 'success delete');
+    }
+
+
+    // function pour effectuer une recherche
+    public function search(){
+        
     }
 }
