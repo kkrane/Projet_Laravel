@@ -29,8 +29,27 @@
 .footer{
 	background-color: #fff;
 	border-top: 1px solid #f8faff;
+	position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer a{
 	color: #000000;
+}
+
+.view-admin img{
+	padding-top: 15px;
+	width: 70%;
+}
+
+.view-admin h1{
+	font-size: 50px;
+	text-align: center;
+	margin: 10px 10px 30px 10px;
+}
+
+.view-admin p{
+	font-size: 20px;
+	padding-top: 15px;
 }

@@ -8,9 +8,10 @@
             <li class="nav-item active"><a class="nav-link" href="{{url('/formation')}}">Formation</a></li>
             <li class="nav-item active"><a class="nav-link" href="{{url('/contact')}}">Contact</a></li>
         </ul>
-        <form style="margin-right: 10px;" class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form action="{{route('search')}}" method="GET" style="margin-right: 10px;" class="form-inline my-2 my-lg-0" enctype="multipart/form-data">
+            {{csrf_field ()}}
+          <input class="form-control mr-sm-2" name="search" type="search" placeholder="Recherche" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
         </form>
         @if(Auth::check())
         <ul class="nav navbar-nav navbar-right">

@@ -69,14 +69,13 @@ class FrontController extends Controller
 
      }
 
-     public function search(){
+     public function search(Request $request){
 
-        $posts = Post::published()->where('title', 'like', "%%")
-                                  ->orWhere('post_type', 'like', "%%")
-                                  ->orWhere('categorie', 'like', "%%")
+        $query = $request->search;
+        $posts = Post::published()->where('titre', 'like', '%' . $query . '%')
                                   ->paginate($this->paginate);
 
-        return view();
+        return view('front.index', compact('posts', 'query'));
 
      }
 

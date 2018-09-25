@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-    <a href="{{route('post.create')}}"><button type="button" class="btn btn-success">Ajouter un post</button>
+    <a href="{{route('post.create')}}"><button type="button" class="btn btn-success">Ajouter un poste</button>
     </a>
     </br>
     @include('back.post.partials.flash')
@@ -16,13 +16,13 @@
       <table class="table">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Title</th>
+            <th scope="col">Titre</th>
             <th scope="col">Stage/Formation</th>
             <th scope="col">Date de publication</th>
             <th scope="col">Status</th>
             <th scope="col">Editer</th>
-            <th scope="col">Show</th>
-            <th scope="col">Delete</th>
+            <th scope="col">Voir</th>
+            <th scope="col">Supprimer</th>
           </tr>
         </thead>
         <tbody>
@@ -33,9 +33,9 @@
             <td>{{$post->created_at->format('d-m-Y')}}</td>
              <td>
                       @if($post->status == 'published')
-                      <button type="button" class="btn btn-info">published</button>
+                      <button type="button" class="btn btn-info">publié</button>
                       @else 
-                      <button type="button" class="btn btn-warning">unpublished</button>
+                      <button type="button" class="btn btn-warning">non publié</button>
                       @endif
              </td>
             <td><a href="{{route('post.edit', $post->id)}}"><button type="button" class="btn btn-success">Modifier</button></a></td>
@@ -44,7 +44,7 @@
               <form class="delete" method="POST" action="{{route('post.destroy', $post->id)}}">
                   {{ method_field('DELETE') }}
                   {{ csrf_field() }}
-                  <input class="btn btn-danger" type="submit" value="delete" >
+                  <input class="btn btn-danger" type="submit" value="Supprimer" >
               </form>
             </td> 
           </tr>

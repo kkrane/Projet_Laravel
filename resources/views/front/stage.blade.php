@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<h1>Tous les stages : </h1>
+		<div class="col-md-12">
+			<h1>Tous les stages : </h1>
+		</div>
 	</div>
 </div>
 <div class="container">

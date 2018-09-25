@@ -33,6 +33,8 @@ Route::get('contact', 'FrontController@contact');
 
 Route::post('contact', 'FrontController@maildev')->name('maildev');
 
+Route::get('/result', 'FrontController@search')->name('search');
+
 Route::get('stage', 'FrontController@showPostByStage')->where(['id' => '[0-9]+']);
 Auth::routes();
 

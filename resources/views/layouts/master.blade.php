@@ -14,11 +14,11 @@
 </header>
 @yield('content')
 @section('scripts')
-<script src="{{asset('js/app.js')}}"></script>
-@show
-<footer class="footer">
+<!-- <footer class="footer">
 @include('partials.footer')
 </footer>
+ --><script src="{{asset('js/app.js')}}"></script>
+@show
 </body>
 </html> 
 
